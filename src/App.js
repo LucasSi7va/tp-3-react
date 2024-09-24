@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import Data from "./fetchData"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <header>
+      <h1>Bem vindo aos Dados dos usuarios</h1>
+        <img src="https://stratlab.com.br/wp-content/uploads/2021/08/businessman-hand-create-artificial-intelligence-for-technology-and-picture-id1221155808_www.jpg" alt='usuario'></img>
+    </header>
+
+<main>
+<h2>aqui tera os dados pessoas dos usuarios:</h2>
+<Data/>
+</main>
+
+<footer>Dados dos usuarios de 2024</footer>
+
+  </div>
+  
+  
+    
   );
 }
 
