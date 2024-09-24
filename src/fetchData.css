@@ -1,17 +1,50 @@
-button{
-    background: none;
-    background-color: antiquewhite;
-    padding: 5px;
-}
-
-button:hover{
-    color: aqua;
-    cursor: pointer;
-    background-color: black;
-}
-
-ul{
+.posts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
     list-style: none;
-    font-style: italic;
+}
+
+.posts li:hover{
+    color: gray;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+
+.posts li{
+    width: 500px;
+    border: 1px solid black;
+
+}
+
+
+.hover-branco{
+    border: 1px solid  black;
     
 }
+
+
+.NomeUsuario{
+    border: 1px solid black;
+    width:  400px;
+    height: 100px;
+    align-content: center;
+    text-align: center;
+    list-style: none;
+}
+
+.NomeUsuario:hover{
+    color: gray;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.grade{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+

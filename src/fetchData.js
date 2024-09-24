@@ -9,7 +9,8 @@ const FetchData = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [selectedUserName, setSelectedUserName] = useState('');
-
+  // hover do mouse
+  const [showComment, setShowComment] = useState(false);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -39,15 +40,21 @@ const FetchData = () => {
   }, [selectedPostId]);
 
   
+
+
+
+
+
   return (
     <div>
 
       <h2>Usuários</h2>
-      <ul>
+      <ul className='grade'>
         {users.map(user => (
-          <li key={user.id}>
-            <h3 onClick={() => { setSelectedUserId(user.id); setSelectedUserName(user.name);
-            }}>{user.name}</h3>
+          <li key={user.id} className='NomeUsuario' onClick={() => { setSelectedUserId(user.id); setSelectedUserName(user.name);
+          }}>
+            <h3>{user.name}</h3>
+            <p>{user.company.catchPhrase}</p>
           </li>
         ))}
       </ul>
@@ -55,11 +62,17 @@ const FetchData = () => {
       {posts.length > 0 && (
         <>
           <h2>Posts do Usuário {selectedUserName}</h2>
-          <ul>
+          <ul className='posts'>
             {posts.map(post => (
-              <li key={post.id}>
-                <p className='posts'>{post.title}</p>
-                <button onClick={() => setSelectedPostId(post.id)}>Ver Comentários</button>
+               <li key={post.id} onClick={() => setSelectedPostId(post.id)}
+               onMouseEnter={() => setShowComment(true)}
+               onMouseLeave={() => setShowComment(false)}>
+                            
+                <h3>{post.title} </h3>
+                <p>{post.body}</p>
+
+          {showComment && "Ver comentario"}
+
               </li>
             ))}
           
@@ -70,9 +83,15 @@ const FetchData = () => {
       {comments.length > 0 && (
         <>
           <h2>Comentários do post</h2>
-          <ul>
+          <ul className='comentario'>
             {comments.map(comment => (
-              <li key={comment.id} className='comentario'>  {comment.body} </li>
+             <li key={comment.id}  > 
+             
+               <h3>Name:</h3> <p>  {comment.name}</p>
+                
+               <h3>Email:</h3>   <p>    {comment.email}</p>
+
+               <h3>Comentários: </h3>  {comment.body} </li>
             ))}
           </ul>
         </>
