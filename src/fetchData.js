@@ -8,6 +8,7 @@ const FetchData = () => {
   const [comments, setComments] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [selectedUserName, setSelectedUserName] = useState('');
 
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const FetchData = () => {
     }
   }, [selectedUserId]);
 
- 
+
   useEffect(() => {
     if (selectedPostId) {
       fetch(`https://jsonplaceholder.typicode.com/comments?postId=${selectedPostId}`)
@@ -37,6 +38,7 @@ const FetchData = () => {
     }
   }, [selectedPostId]);
 
+  
   return (
     <div>
 
@@ -44,29 +46,30 @@ const FetchData = () => {
       <ul>
         {users.map(user => (
           <li key={user.id}>
-           <h3> {user.name}</h3> 
-            <button onClick={() => setSelectedUserId(user.id)}>Ver os post?</button>
+            <h3 onClick={() => { setSelectedUserId(user.id); setSelectedUserName(user.name);
+            }}>{user.name}</h3>
           </li>
         ))}
       </ul>
 
       {posts.length > 0 && (
         <>
-          <h2>Posts do Usuário {selectedUserId}</h2>
+          <h2>Posts do Usuário {selectedUserName}</h2>
           <ul>
             {posts.map(post => (
               <li key={post.id}>
-              <p className='posts'>{post.title}</p>
+                <p className='posts'>{post.title}</p>
                 <button onClick={() => setSelectedPostId(post.id)}>Ver Comentários</button>
               </li>
             ))}
+          
           </ul>
         </>
       )}
 
       {comments.length > 0 && (
         <>
-          <h2>Comentários do post {selectedPostId}</h2>
+          <h2>Comentários do post</h2>
           <ul>
             {comments.map(comment => (
               <li key={comment.id} className='comentario'>  {comment.body} </li>
